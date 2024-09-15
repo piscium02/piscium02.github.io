@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iuembe</title>
+    <style>
+        /* Đặt toàn bộ nội dung ở giữa trang */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        
+        /* Container cho cả phần nhập mật khẩu và phần lỗi */
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tùy chỉnh ảnh GIF */
+        .gif {
+            width: 350px;
+            margin-bottom: 20px;
+        }
+
+        /* Tùy chỉnh input và button */
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Ẩn phần lỗi ban đầu */
+        .error-container {
+            display: none;
+        }
+    </style>
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            var correctPassword = "261123"; // Mật khẩu đúng
+
+            if (password === correctPassword) {
+                window.location.href = "main.html"; // Điều hướng đến trang chính
+            } else {
+                // Hiển thị phần lỗi với GIF khác
+                document.querySelector('.login-container').style.display = 'none'; // Ẩn form mật khẩu
+                document.querySelector('.error-container').style.display = 'block'; // Hiển thị thông báo lỗi
+            }
+        }
+
+        function tryAgain() {
+            // Hiển thị lại form mật khẩu
+            document.querySelector('.login-container').style.display = 'block';
+            document.querySelector('.error-container').style.display = 'none'; // Ẩn phần lỗi
+            document.getElementById("password").value = ''; // Xóa mật khẩu đã nhập
+        }
+    </script>
+</head>
+<body>
+    <!-- Container cho phần nhập mật khẩu -->
+    <div class="container login-container">
+        <!-- Chèn ảnh GIF -->
+        <img src="https://i.pinimg.com/originals/42/7a/24/427a240ea1cddbf87d5e9a90523098c8.webp" alt="GIF" class="gif">
+
+        <h2>Nhập Pass nhanh không bị pắn =)))
+            *Gợi ý pass dài 6 số*
+        </h2>
+        <input type="password" id="password" placeholder="Mật khẩu" required>
+        <br>
+        <button onclick="checkPassword()">Zô</button>
+    </div>
+
+    <!-- Container cho phần lỗi mật khẩu sai -->
+    <div class="container error-container">
+        <!-- Chèn ảnh GIF báo lỗi -->
+        <img src="https://i.pinimg.com/originals/c3/9f/62/c39f62ff76786cb3b3da44dd9478ba10.jpg" alt="Error GIF" class="gif">
+        <h2>Sai!!!!!!!!!! Howww? Quây sờ ma? EM SUY NGHĨ LẠI NHANH </h2>
+        <button onclick="tryAgain()">Try Again</button>
+    </div>
+</body>
+</html>
+
